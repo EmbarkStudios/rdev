@@ -97,7 +97,7 @@ impl std::error::Error for SimulateError {}
 /// a different value too.
 /// Careful, on Windows KpReturn does not exist, it' s strictly equivalent to Return, also Keypad keys
 /// get modified if NumLock is Off and ARE pagedown and so on.
-#[derive(Debug, Copy, Clone, PartialEq)]
+#[derive(Debug, Copy, Clone, PartialEq, arbitrary::Arbitrary)]
 #[cfg_attr(feature = "serialize", derive(Serialize, Deserialize))]
 pub enum Key {
     /// Alt key on Linux and Windows (option key on macOS)
@@ -214,7 +214,7 @@ pub enum Key {
 /// Standard mouse buttons
 /// Some mice have more than 3 buttons. These are not defined, and different
 /// OSs will give different `Button::Unknown` values.
-#[derive(Debug, Copy, Clone, PartialEq)]
+#[derive(Debug, Copy, Clone, PartialEq, arbitrary::Arbitrary)]
 #[cfg_attr(feature = "serialize", derive(Serialize, Deserialize))]
 pub enum Button {
     Left,
@@ -225,7 +225,7 @@ pub enum Button {
 
 /// In order to manage different OSs, the current EventType choices are a mix and
 /// match to account for all possible events.
-#[derive(Debug, Copy, Clone, PartialEq)]
+#[derive(Debug, Copy, Clone, PartialEq, arbitrary::Arbitrary)]
 #[cfg_attr(feature = "serialize", derive(Serialize, Deserialize))]
 pub enum EventType {
     /// The keys correspond to a standard qwerty layout, they don't correspond
